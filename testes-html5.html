@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<!--EM HTML 4 - Tambem funciona no html5 - na w3 esta assim
+			acentos ate em comentarios so podem ser usados com um charset que permita acentos
+			senao nao valida
+			<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		-->
+		<meta charset="utf-8">
+		
+		<!--html 5 precisa ter o title-->
+		<title>Html 5 - Testes básicos</title>
+
+		<!--em HTML5:
+			- script nao precisa do language ou type
+			- CSS tambem não precisa do type
+		-->
+		
+		<!--script que cria esses elementos com js no IE. 
+			Precisa pq o IE não deixa por css em elementos que ele nao conhece
+			
+			RETIRADO pois a biblioteca modernizr já faz o que essa biblioteca faria
+			-->				
+		<!--[-->
+			<!--if lte IE 8-->
+					<!--]-->
+			<!--<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>-->
+		<!--[-->
+			<!--endif-->
+					<!--]-->
+					
+		<!--www.modernizr.com
+			No site da pra fazer um script custom, só com o que for usar
+			- cria um objeto js pra testar se o browser aceita elementos novos ex.: Modernizr.canvas
+			- cria classes css como "multiplebgs" e "no-multiplebgs" para aplicar estilos diferentes se houver e nao houver o suporte
+			- cria suporte pros elementos no IE igual o script anterior
+			lava, passa, faz café e cozinha XD -->
+		<script src="js/modernizr-2.5.3.js"></script>
+	</head>
+	<body style="height:2000px">
+		<h1>testes html5 basicos</h1>
+		<!--acesskey só pode usar em links e forms! tá aqui de alegre pra mostrar que não funfa XD
+			contenteditable nao funfou no chrome e no safari (maldita apple)
+			o dir funfa até no IE (que bom que ele aceita coisas TÃO úteis assim...)
+			o lang é meio dificil saber se vale a pena no meio do código (no começo do html é BEM util, mas no meio é incomodo colocar a cada termo em ingles... talvez um dia sirva pra SEO...)
+			-->
+			
+		<script>
+			//teste do modernizr
+			if(Modernizr.canvas){
+				document.write("Seu browser tem canvas =)");
+			}else{
+				document.write("Seu browser não tem canvas. Talvez você esteja usando o IE pensando que é um browser de verdade...\nVéi, na boa, baixa um browser...");
+			}
+		</script>
+		<div contenteditable="true" draggable="true" accesskey="u" dir="ltr">
+			<p>edita ae \o/</p>
+			<p>outro paragrafo pra editar com um span em ingles: <span lang="en">English</span></p>
+			<span>agora um span</span>
+			<h2>um h2 saudável pra editar...</h2>
+			<span hidden>esse span nao deveria aparecer...</span>	
+		</div>
+		<!--tabindex é a sequencia com o tab - nao funfou no safari (novamente - maldita apple)-->
+		<a href="#" accesskey="a" tabindex="3">Acesskey a e tabindex 3</a>
+		<a href="#" accesskey="b" tabindex="1">Acesskey b e tabindex 1</a>
+		<a href="#" accesskey="a" tabindex="2">Acesskey a(de novo, pra testar) e tabindex 2</a>
+		
+		<!--um article pode conter vários articles dentro.
+			ele representa um conteudo autossuficiente e que poderia ser transmitido, por exemplo, num rss
+			ex.: post em forum, matéria publicada num blog comentarios do blog
+			-->
+		<article>
+			Exemplo de article - Materia do blog, provavelmente falando alguma banalidade como onde comprar esmalte que ajuda bebê foca e é sustentável
+			<article>Comentario 1 - Culpa do Lula</article>
+			<article>comentario 2 - Brasil nunca vai pra frente</article>
+			<article>comentario 3 - Spam</article>
+			<article>comentario 4 - Spam</article>
+			<article>comentario 5 - Spam</article>
+			<article>comentario 6 - Spam</article>
+			<article>comentario 7 - Spam</article>
+			<article>comentario 8 - Spam</article>
+		</article>
+		
+		<!--aside é um conteudo relacionado, mas que é separado.
+			normalmente a regra é: se ele for retirado, não prejudica a compreensão do resto da pagina
+			ex.: banner, barra lateral, texto com propaganda (adsense), barra de navegação, etcs 
+			
+			Provavelmente serve bem pra widgets e boxes laterais em geral.
+			ver depois se realmente pode usar nele esses h1 malucos sem ferrar o SEO
+		-->
+		<!--o nav serve pra agrupamentos de links para navegação-->
+		<aside>
+			<nav>
+				<h1>Categorias</h1>
+				<ul>
+					<li>categoria 1</li>
+					<li>categoria 2</li>
+				</ul>
+				<h1>Blogroll(ou Rickroll se preferir...)</h1>
+				<ul>
+					<li>blog 1</li>
+					<li>blog 2</li>
+				</ul>
+			</nav>
+		</aside>
+		
+		<!--datalist faz uma espécie de auto completar num input, mas  nele ficam algumas sugestões de opções
+			funciona no Firefox e no opera
+			no ff aparece depois de digitar a primeira letra, mas aparecem mesmo as que nao comecam com a letra digitada...
+			no opera aparece logo que o foco vai pro input.
+			pra usar, coloca o atributo list no input e depois cria um datalist com o id igual o atributo list do input
+			o exemplo maior está em /exemplos-livro/cap_02/c2-datalist.html 
+			-->
+		<label for"fru">Fruta preferida:</label>
+		<input type="text" list="frutas" id="fru">
+		<datalist id="frutas">
+			<option value="Abacate">
+			<option value="Abacaxi">
+			<option value="Banana">
+			<option value="Mamão">
+			<option value="Manga">
+			<option value="Pera">
+		</datalist>
+		
+		<!--summary e details só funcionam com um js.
+			ver em /exemplos-livro/cap_02/c2_details.html
+			-->
+	</body>
+</html>
